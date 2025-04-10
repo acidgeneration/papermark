@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  papermark:
+    build: .
+    container_name: papermark
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
