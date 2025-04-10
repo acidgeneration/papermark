@@ -3,7 +3,8 @@ FROM node:18 AS builder
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm run build --verbose
+
 
 # Финальный образ
 FROM node:18-alpine
