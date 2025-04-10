@@ -9,3 +9,15 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+  nginx:
+    image: nginx:stable
+    container_name: nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template
+    environment:
+      - DOMAIN=${DOMAIN}
+    depends_on:
+      - papermark
